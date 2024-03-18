@@ -1,1 +1,49 @@
-<p>requester works!</p>
+<div class="requester">
+  <form [formGroup]="requesterForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Nome do solicitante"
+        formControlName="requesterName"
+      />
+      <mat-error
+        *ngIf="requesterForm.get('requesterName')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Descrição"
+        formControlName="description"
+      ></textarea>
+      <mat-error *ngIf="requesterForm.get('description')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Preço do produto"
+        formControlName="productPrice"
+      />
+      <mat-error *ngIf="requesterForm.get('productPrice')?.hasError('required')"
+        >Campo obrigatório</mat-error
+      >
+      <mat-error *ngIf="requesterForm.get('productPrice')?.hasError('pattern')"
+        >Formato inválido</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!requesterForm.valid"
+    >
+      Enviar
+    </button>
+  </form>
+</div>
