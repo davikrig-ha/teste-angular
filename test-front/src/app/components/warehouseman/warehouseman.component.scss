@@ -1,0 +1,21 @@
+.warehouseman{
+    display: flex;
+    flex-direction: column;
+  
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    mat-form-field {
+      margin-bottom: 20px;
+    }
+  
+    button {
+      margin-top: 5px;
+    }
+
+    h1{
+        text-align: center;
+    }
+}

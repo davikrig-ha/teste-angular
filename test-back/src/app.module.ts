@@ -10,7 +10,7 @@ import { Solicitations } from './solicitations/entities/solicitations.entity';
     TypeOrmModule.forRoot({
       type: process.env.TYPEORM_TYPE_CONN,
       host: process.env.TYPEORM_HOST,
-      port: Number(process.env.TYPEORM_PORT),
+      port: parseInt(process.env.TYPEORM_PORT),
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DB_NAME,

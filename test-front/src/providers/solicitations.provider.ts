@@ -14,9 +14,30 @@ export class SolicitationService {
         return new Promise((resolve, reject) => {
             this.apiGateway
                 .post('solicitations', data)
-                .subscribe((response: HttpResponse<any>) => {
+                .subscribe({next: (response: HttpResponse<any>) => {
                     resolve(response.body);
-                }, reject);
+                }, error: reject});
         });
     }
+
+    getLast(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .get("solicitations/last")
+                .subscribe({ next: (response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, error: reject});
+        });
+    }
+
+    update(id: number, data: any): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.apiGateway
+                .patch("solicitations/:id", { id: id }, data)
+                .subscribe({next: (response: HttpResponse<any>) => {
+                    resolve(response.body);
+                }, error: reject});
+        });
+    }
+
 }

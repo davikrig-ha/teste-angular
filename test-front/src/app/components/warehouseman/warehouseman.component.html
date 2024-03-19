@@ -1,0 +1,66 @@
+<div *ngIf="form" class="warehouseman">
+  <h1>Avaliação</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Nome do Solicitante"
+        formControlName="requesterName"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Descrição do Item"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Preço do Produto"
+        formControlName="productPrice"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ação</mat-label>
+      <mat-select formControlName="status">
+        <mat-option [value]="true">Aprovar</mat-option>
+        <mat-option [value]="false">Reprovar</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        placeholder="Observações"
+        formControlName="observation"
+      ></textarea>
+      <mat-error
+        *ngIf="
+          form.get('status')!.value === false &&
+          form.get('observation')!.hasError('required')
+        "
+      >
+        Campo obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="secondary" (click)="onCancel()">
+      Cancelar
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Salvar
+    </button>
+  </form>
+</div>

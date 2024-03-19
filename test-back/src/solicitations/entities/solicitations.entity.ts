@@ -14,7 +14,7 @@ export class Solicitations {
   @Column({ name: 'product_price', type: 'decimal', nullable: false })
   productPrice: number;
 
-  @Column({ name: 'status', default: false })
+  @Column({ name: 'status', nullable: true })
   status: boolean;
 
   @Column({ name: 'observation', nullable: true })

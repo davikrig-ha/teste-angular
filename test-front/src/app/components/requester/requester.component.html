@@ -1,4 +1,4 @@
-<div class="requester">
+<div *ngIf="requesterForm" class="requester">
   <form [formGroup]="requesterForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input
@@ -15,7 +15,7 @@
     <mat-form-field>
       <textarea
         matInput
-        placeholder="Descrição"
+        placeholder="Descrição do Item"
         formControlName="description"
       ></textarea>
       <mat-error *ngIf="requesterForm.get('description')?.hasError('required')"
@@ -32,10 +32,11 @@
       <mat-error *ngIf="requesterForm.get('productPrice')?.hasError('required')"
         >Campo obrigatório</mat-error
       >
-      <mat-error *ngIf="requesterForm.get('productPrice')?.hasError('pattern')"
-        >Formato inválido</mat-error
-      >
     </mat-form-field>
+
+    <button mat-raised-button color="secondary" (click)="onCancel()">
+      Cancelar
+    </button>
 
     <button
       mat-raised-button
@@ -43,7 +44,7 @@
       type="submit"
       [disabled]="!requesterForm.valid"
     >
-      Enviar
+      Salvar
     </button>
   </form>
 </div>
