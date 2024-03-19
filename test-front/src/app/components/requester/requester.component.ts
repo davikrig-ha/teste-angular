@@ -45,7 +45,10 @@ export class RequesterComponent {
 
   async onSubmit(): Promise<void> {
     if (this.requesterForm.valid) {
-      const data = this.requesterForm.getRawValue();
+      let { requesterName, description, productPrice } =
+        this.requesterForm.getRawValue();
+      productPrice = `${productPrice.slice(0, -2)},${productPrice.slice(-2)}`;
+      const data = { requesterName, description, productPrice };
       await this.api.create(data);
       this.router.navigate(['/home']);
     }

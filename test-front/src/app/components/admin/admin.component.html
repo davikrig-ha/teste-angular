@@ -1,0 +1,108 @@
+<div class="admin">
+  <div *ngIf="dataTable" class="filter">
+    <div class="input-container">
+      <mat-form-field class="search-field">
+        <input
+          matInput
+          #searchInput
+          (input)="applyFilter(searchInput.value)"
+          placeholder="Filtrar"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="status-field">
+        <mat-label>Status</mat-label>
+        <mat-select
+          [(value)]="selectedStatus"
+          (selectionChange)="applyFilter(searchInput.value)"
+        >
+          <mat-option
+            *ngFor="let statusOption of statusOptions"
+            [value]="statusOption.value"
+          >
+            {{ statusOption.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataTable">
+        <ng-container matColumnDef="requesterName">
+          <th mat-header-cell *matHeaderCellDef>Nome do Solicitante</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.requesterName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descrição</th>
+          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="productPrice">
+          <th mat-header-cell *matHeaderCellDef>Preço do Produto</th>
+          <td mat-cell *matCellDef="let element">
+            R${{ element.productPrice }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              element.status === null
+                ? "Não Avaliado"
+                : element.status === false
+                ? "Reprovado"
+                : "Aprovado"
+            }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="observation">
+          <th mat-header-cell *matHeaderCellDef>Observação</th>
+          <td mat-cell *matCellDef="let element">
+            <span class="observation-text">{{
+              element.observation ? element.observation : "Sem Obs."
+            }}</span>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="
+            [
+              'requesterName',
+              'description',
+              'productPrice',
+              'status',
+              'observation'
+            ];
+            sticky: true
+          "
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="
+            let row;
+            columns: [
+              'requesterName',
+              'description',
+              'productPrice',
+              'status',
+              'observation'
+            ]
+          "
+        ></tr>
+      </table>
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onReturn()"
+    class="back-button"
+  >
+    Voltar
+  </button>
+</div>

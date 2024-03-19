@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Solicitations } from './entities/solicitations.entity';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { SolicitationsDto } from './dtos/solicitations.dto';
 
 @Injectable()
@@ -16,6 +16,10 @@ export class SolicitationsService {
     entity.id = null;
 
     return this.repository.save(entity);
+  }
+
+  findAll() {
+    return this.repository.find();
   }
 
   async update(id: number, dto: SolicitationsDto): Promise<Solicitations> {

@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WarehousemanComponent } from './components/warehouseman/warehouseman.component';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { AdminComponent } from './components/admin/admin.component';
+import { MatTableModule } from '@angular/material/table'; 
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
     RequesterComponent,
     HomeComponent,
     WarehousemanComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +37,11 @@ import { MatSelectModule } from '@angular/material/select';
     HttpClientModule,
     MatSnackBarModule,
     MatSelectModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    MatTableModule
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,38 @@
+.admin {
+  .back-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-field {
+    width: 100%;
+    max-width: 500px;
+    margin-right: 5px;
+  }
+
+  .status-field {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .table-container {
+    width: 100%!important;
+    max-width: 800px !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+  }
+
+  .mat-column-observation {
+    max-width: 200px!important;
+  }
+
+  .observation-text {
+    word-break: break-all;
+  }
+}

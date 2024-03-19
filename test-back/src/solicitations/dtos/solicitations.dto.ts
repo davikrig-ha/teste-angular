@@ -4,7 +4,7 @@ export class SolicitationsDto {
     id: number;
     requesterName: string;
     description: string;
-    productPrice: number;
+    productPrice: string;
     status: boolean;
     observation: string;
 

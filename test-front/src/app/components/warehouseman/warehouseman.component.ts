@@ -40,7 +40,7 @@ export class WarehousemanComponent {
       );
       this.router.navigate(['/home']);
     } else {
-      this.id = data.id;
+      this.id = data.id!;
       this.form.patchValue({
         requesterName: data.requesterName,
         description: data.description,

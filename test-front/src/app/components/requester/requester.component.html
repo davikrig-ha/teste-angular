@@ -27,6 +27,8 @@
       <input
         matInput
         placeholder="Preço do produto"
+        prefix="R$" 
+        mask="00,00"
         formControlName="productPrice"
       />
       <mat-error *ngIf="requesterForm.get('productPrice')?.hasError('required')"
